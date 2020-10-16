@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+}
+.criminalsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.criminal__scum {
+    border: 1px solid black;
+    padding: 1em;
+    width: 20%;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;  
+}
