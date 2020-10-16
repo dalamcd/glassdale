@@ -1,6 +1,6 @@
+import { getConvictions } from "./convictions/ConvictionProvider.js";
+import { ConvictionSelect } from "./convictions/ConvictionSelect.js";
 import { CriminalList } from "./criminals/CriminalList.js";
 
-const html = CriminalList();
-const contentElement = document.querySelector(".criminalsContainer");
-
-contentElement.innerHTML = html;
+CriminalList();
+getConvictions().then(ConvictionSelect())
