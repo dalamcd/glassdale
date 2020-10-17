@@ -1,13 +1,11 @@
 import { getCriminals, useCriminals } from "./CriminalsProvider.js";
 import { criminalCard } from "./Criminal.js"
 
-
 export const CriminalList = () => {
-
-    let criminalHTML = "";
 
     getCriminals()
         .then( () => {
+            let criminalHTML = "";
             useCriminals().forEach( criminal => {
                 criminalHTML += criminalCard(criminal)
             });

@@ -10,6 +10,5 @@ export const getConvictions = () => {
         .then(response => response.json())
         .then(parsedCrimes => {
             convictions = parsedCrimes;
-            ConvictionSelect();
         });
 }
