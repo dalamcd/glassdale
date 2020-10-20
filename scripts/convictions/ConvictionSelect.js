@@ -23,7 +23,7 @@ eventHub.addEventListener("change", event => {
         // Create custom event. Provide an appropriate name.
         const customEvent = new CustomEvent("crimeChosen", {
             detail: {
-                crimeThatWasChosen: event.target.value
+                crimeThatWasChosen: parseInt(event.target.value)
             }
         })
 
@@ -41,7 +41,7 @@ const render = convictionsCollection => {
     contentTarget.innerHTML = `
         <select class="dropdown" id="crimeSelect">
             <option value="0">Please select a crime...</option>
-            ${convictionsCollection.map(convObj => `<option>${convObj.name}</option>`)}
+            ${convictionsCollection.map(convObj => `<option value="${convObj.id}">${convObj.name}</option>`)}
         </select>
     `
 }
