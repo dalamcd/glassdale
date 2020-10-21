@@ -1,10 +1,23 @@
 import { getCriminals, useCriminals } from "./CriminalsProvider.js";
 import { criminalCard } from "./Criminal.js"
 import { useConvictions } from "../convictions/ConvictionProvider.js";
-import { ConvictionSelect } from "../convictions/ConvictionSelect.js";
 
 const eventHub = document.querySelector(".container")
 const contentElement = document.querySelector(".criminalsContainer");
+
+eventHub.addEventListener("officerSelected", event => {
+    // How can you access the officer name that was selected by the user?
+    const officerName = event.detail.officer;
+
+    // How can you get the criminals that were arrested by that officer?
+    const criminals = useCriminals()
+    const filteredCriminals = criminals.filter(criminalObject => {
+        if (criminalObject.arrestingOfficer === officerName) {
+            return true;
+        }
+    });
+    render(filteredCriminals);
+});
 
 // Listen for the custom event you dispatched in ConvictionSelect
 eventHub.addEventListener('crimeChosen', event => {
