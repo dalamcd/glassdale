@@ -29,7 +29,7 @@ eventHub.addEventListener('crimeChosen', event => {
     const convictionsArray = useConvictions();
     const chosenConviction = convictionsArray.find(convObj => convObj.id === event.detail.crimeThatWasChosen);
 
-    const matchingCriminals = useCriminals().filter( (crimObj) => {
+    const matchingCriminals = useCriminals().filter((crimObj) => {
         return crimObj.conviction === chosenConviction.name;
     });
 
@@ -47,7 +47,7 @@ const render = (criminalArray) => {
 export const CriminalList = () => {
 
     getCriminals()
-        .then( () => {
+        .then(() => {
             render(useCriminals());
         });
 }

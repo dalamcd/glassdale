@@ -5,7 +5,7 @@ const contentElement = document.querySelector(".officersContainer")
 
 const render = (officerList) => {
     let officerHTML = "";
-    officerList.forEach( officerObj => {
+    officerList.forEach(officerObj => {
         officerHTML += officerCard(officerObj)
     });
     contentElement.innerHTML += officerHTML;
@@ -13,7 +13,7 @@ const render = (officerList) => {
 
 export const OfficerList = () => {
 
-    getOfficers().then( () => {
+    getOfficers().then(() => {
         render(useOfficers());
     })
 }
