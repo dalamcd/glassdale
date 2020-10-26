@@ -4,6 +4,7 @@ import { useConvictions } from "../convictions/ConvictionProvider.js";
 
 const eventHub = document.querySelector(".container")
 const contentElement = document.querySelector(".criminalsContainer");
+let previousCriminal = 0;
 
 eventHub.addEventListener("officerSelected", event => {
     // How can you access the officer name that was selected by the user?
@@ -34,7 +35,26 @@ eventHub.addEventListener('crimeChosen', event => {
     });
 
     render(matchingCriminals);
-})
+});
+
+eventHub.addEventListener("associatesButton", e => {
+    const criminalTarget = document.querySelector(`#criminal--${e.detail.criminalID}`)
+    if (previousCriminal) {
+        const preCrimObj = findCriminal(previousCriminal)
+        const previousTarget = document.querySelector(`#criminal--${preCrimObj.id}`)
+        previousTarget.innerHTML = criminalCard(preCrimObj, true);
+    }
+
+    const criminalAssociates = findCriminal(e.detail.criminalID).known_associates;
+    criminalTarget.innerHTML += criminalAssociates.map(crim => {
+        return `<p>Name: ${crim.name}</p>
+        <p>Alibi: ${crim.alibi}`;
+    });
+
+    previousCriminal = e.detail.criminalID;
+});
+
+const findCriminal = id => useCriminals().find(crim => crim.id === id);
 
 const render = (criminalArray) => {
     let criminalHTML = "";

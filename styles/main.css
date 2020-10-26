@@ -7,7 +7,7 @@ body {
     justify-content: space-between;
 }
 
-.criminal__scum {
+.criminal__scum, .witness {
     border: 1px solid black;
     padding: 1em;
     width: 20%;
