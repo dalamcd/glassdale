@@ -5,6 +5,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    width: 80%;
 }
 
 .criminal__scum, .witness {
@@ -12,14 +13,19 @@ body {
     padding: 1em;
     width: 20%;
     margin-top: 0.5em;
-    margin-bottom: 0.5em;  
+    margin-bottom: 0.5em;
+}
+
+.notesContainer {
+    margin-left: 10px;
+    width: fit-content;
 }
 
 .dataContainer {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 
-.note {
+/* .note {
     width: 30%;
-}
+} */
