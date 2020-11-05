@@ -14,7 +14,7 @@ eventHub.addEventListener("click", clickEvent => {
             date: document.querySelector("#note-date").value,
             author: document.querySelector("#note-author").value,
             timestamp: Date.now(),
-            subject: document.querySelector("#note-subject").value,
+            criminalId: document.querySelector("#note-subject").value,
             text: document.querySelector("#note-text").value
         }
 

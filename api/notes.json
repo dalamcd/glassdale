@@ -1,44 +1,12 @@
 {
   "notes": [
     {
-      "date": "2020-10-07",
-      "author": "sdf",
-      "timestamp": 1603397159075,
-      "subject": "sdf",
-      "text": "sdf",
+      "date": "2020-11-18",
+      "author": "Blah Blah",
+      "timestamp": 1604525272122,
+      "criminalId": "3",
+      "text": "Testing notes",
       "id": 1
-    },
-    {
-      "date": "2020-11-05",
-      "author": "Marsha",
-      "timestamp": 1603397198194,
-      "subject": "A Longer Name",
-      "text": "This is a lot of text that I am typing for no real reason just to test what longer text looks like thank you for listening you've been a great audience, tip your waitstaff.",
-      "id": 2
-    },
-    {
-      "date": "2020-10-20",
-      "author": "sdfsdfsd",
-      "timestamp": 1603398002497,
-      "subject": "sdfsdf",
-      "text": "sdfdsfsdfsdfsdf",
-      "id": 3
-    },
-    {
-      "date": "2020-10-20",
-      "author": "sdfsdfsd",
-      "timestamp": 1603398008393,
-      "subject": "sdfsdf",
-      "text": "sdfdsfsdfsdfsdf",
-      "id": 4
-    },
-    {
-      "date": "2020-10-20",
-      "author": "sdfsdfsdsdfsdfsdfsdfsdfsdffsdfsdfds",
-      "timestamp": 1603398013121,
-      "subject": "sdfsdf",
-      "text": "sdfdsfsdfsdfsdf",
-      "id": 5
     }
   ]
 }
