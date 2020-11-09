@@ -19,8 +19,8 @@ const render = (notes) => {
     getCriminals().then(() => {
         notes.forEach(note => {
             noteHTML += noteCard(note, useCriminals());
-            contentElement.innerHTML = noteHTML;
         });
+    contentElement.innerHTML = noteHTML;
     });
 }
 

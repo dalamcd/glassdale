@@ -23,6 +23,15 @@ eventHub.addEventListener("click", clickEvent => {
     }
 })
 
+eventHub.addEventListener("deleteButtonClicked", e => {
+    const [temp, id] = e.detail.id.split("--");
+    fetch(`http://localhost:8088/notes/${id}`, {
+        method: "DELETE"
+    })
+    .then(getNotes)
+    .then(dispatchStateChangeEvent)
+})
+
 export const useNotes = () => notes.slice();
 
 export const getNotes = () => {

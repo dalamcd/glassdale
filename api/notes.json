@@ -1,12 +1,3 @@
 {
-  "notes": [
-    {
-      "date": "2020-11-18",
-      "author": "Blah Blah",
-      "timestamp": 1604525272122,
-      "criminalId": "3",
-      "text": "Testing notes",
-      "id": 1
-    }
-  ]
+  "notes": []
 }
