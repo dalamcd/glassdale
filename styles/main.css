@@ -8,7 +8,7 @@ body {
     width: 80%;
 }
 
-.criminal__scum, .witness {
+.criminal__scum, .witness, .facility {
     border: 1px solid black;
     padding: 1em;
     width: 20%;

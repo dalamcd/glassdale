@@ -1,6 +1,8 @@
 import { getCriminals, useCriminals } from "./CriminalsProvider.js";
 import { criminalCard } from "./Criminal.js"
 import { useConvictions } from "../convictions/ConvictionProvider.js";
+import { getCriminalFacilities, useCriminalFacilities } from "../facility/CriminalFacilityProvider.js";
+import { getFacilities, useFacilities } from "../facility/FacilityProvider.js";
 
 const eventHub = document.querySelector(".container")
 const contentElement = document.querySelector(".criminalsContainer");
@@ -17,7 +19,7 @@ eventHub.addEventListener("officerSelected", event => {
             return true;
         }
     });
-    render(filteredCriminals);
+    render(filteredCriminals, useCriminalFacilities(), useFacilities());
 });
 
 // Listen for the custom event you dispatched in ConvictionSelect
@@ -34,15 +36,18 @@ eventHub.addEventListener('crimeChosen', event => {
         return crimObj.conviction === chosenConviction.name;
     });
 
-    render(matchingCriminals);
+    render(matchingCriminals, useCriminalFacilities(), useFacilities());
 });
 
 eventHub.addEventListener("associatesButton", e => {
     const criminalTarget = document.querySelector(`#criminal--${e.detail.criminalID}`)
     if (previousCriminal) {
         const preCrimObj = findCriminal(previousCriminal)
+        const facilitiesList = useCriminalFacilities().filter(fc => fc.criminalId === preCrimObj.id);
+        const facilities = facilitiesList.map(fac => useFacilities().find(fc => fc.id === fac.facilityId));
         const previousTarget = document.querySelector(`#criminal--${preCrimObj.id}`)
-        previousTarget.innerHTML = criminalCard(preCrimObj, true);
+        if(previousTarget)
+            previousTarget.innerHTML = criminalCard(preCrimObj, facilities, true);
     }
 
     const criminalAssociates = findCriminal(e.detail.criminalID).known_associates;
@@ -54,20 +59,35 @@ eventHub.addEventListener("associatesButton", e => {
     previousCriminal = e.detail.criminalID;
 });
 
+eventHub.addEventListener("click", e => {
+    if(e.target.id === "listCriminal")
+        CriminalList();
+});
+
 const findCriminal = id => useCriminals().find(crim => crim.id === id);
 
-const render = (criminalArray) => {
+const render = (criminalArray, crimFacArray, facArray) => {
     let criminalHTML = "";
     criminalArray.forEach(crimObj => {
-        criminalHTML += criminalCard(crimObj);
+        const facilitiesList = crimFacArray.filter(fc => fc.criminalId === crimObj.id);
+        const facilities = facilitiesList.map(fac => facArray.find(fc => fc.id === fac.facilityId));
+        criminalHTML += criminalCard(crimObj, facilities);
     });
     contentElement.innerHTML = criminalHTML;
+}
+
+export const CriminalButton = () => {
+
+        const contentTarget = document.querySelector(".filters")
+        contentTarget.insertAdjacentHTML("beforeend", `<button id="listCriminal">List Criminals</button>`);
 }
 
 export const CriminalList = () => {
 
     getCriminals()
+        .then(getCriminalFacilities)
+        .then(getFacilities)
         .then(() => {
-            render(useCriminals());
+            render(useCriminals(), useCriminalFacilities(), useFacilities());
         });
 }
